@@ -1,0 +1,17 @@
+{
+  "extends": "@workspace/typescript-config/base.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "types": ["node"],
+    "paths": {
+      "@workspace/db": ["../db/src/index.ts"],
+      "@workspace/db/schema": ["../db/src/schema.ts"],
+      "@workspace/db/*": ["../db/src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}

@@ -14,7 +14,9 @@
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.4.0",
     "@hugeicons/react": "^1.1.10",
-    "@workspace/shared": "workspace:*",
+    "@tanstack/react-form": "^1.33.5",
+    "@workspace/auth": "workspace:*",
+    "@workspace/db": "workspace:*",
     "@workspace/ui": "workspace:*",
     "better-auth": "^1.7.18",
     "cn": "^0.5.2",

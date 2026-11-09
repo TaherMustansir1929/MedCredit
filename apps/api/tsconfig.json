@@ -1,8 +1,21 @@
 {
+  "extends": "@workspace/typescript-config/base.json",
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
     "strict": true,
+    "declaration": false,
+    "declarationMap": false,
     "types": ["bun"],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  }
+    "jsxImportSource": "hono/jsx",
+    "paths": {
+      "drizzle-orm": ["../../packages/db/node_modules/drizzle-orm", "../../node_modules/drizzle-orm"],
+      "@workspace/db": ["../../packages/db/src/index.ts"],
+      "@workspace/db/schema": ["../../packages/db/src/schema.ts"],
+      "@workspace/auth": ["../../packages/auth/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*"]
 }

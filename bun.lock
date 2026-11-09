@@ -16,6 +16,9 @@
     "apps/api": {
       "name": "api",
       "dependencies": {
+        "@workspace/auth": "workspace:*",
+        "@workspace/db": "workspace:*",
+        "drizzle-orm": "^1.0.0-rc.5",
         "hono": "^4.13.16",
       },
       "devDependencies": {
@@ -28,7 +31,9 @@
       "dependencies": {
         "@hugeicons/core-free-icons": "^4.4.0",
         "@hugeicons/react": "^1.1.10",
-        "@workspace/shared": "workspace:*",
+        "@tanstack/react-form": "^1.33.5",
+        "@workspace/auth": "workspace:*",
+        "@workspace/db": "workspace:*",
         "@workspace/ui": "workspace:*",
         "better-auth": "^1.7.18",
         "cn": "^0.5.2",
@@ -48,6 +53,36 @@
         "typescript": "^5",
       },
     },
+    "packages/auth": {
+      "name": "@workspace/auth",
+      "version": "0.0.0",
+      "dependencies": {
+        "@workspace/db": "workspace:*",
+        "better-auth": "^1.7.18",
+        "drizzle-orm": "^1.0.0-rc.5",
+      },
+      "devDependencies": {
+        "@types/node": "^26.6.6",
+        "@workspace/typescript-config": "workspace:*",
+        "typescript": "^5",
+      },
+    },
+    "packages/db": {
+      "name": "@workspace/db",
+      "version": "0.0.0",
+      "dependencies": {
+        "@neondatabase/serverless": "^1.2.0",
+        "dotenv": "^18.0.9",
+        "drizzle-orm": "^1.0.0-rc.5",
+      },
+      "devDependencies": {
+        "@types/node": "^26.6.6",
+        "@workspace/typescript-config": "workspace:*",
+        "drizzle-kit": "^1.0.0-rc.5",
+        "tsx": "^4.23.15",
+        "typescript": "^5",
+      },
+    },
     "packages/eslint-config": {
       "name": "@workspace/eslint-config",
       "version": "0.0.0",
@@ -63,21 +98,6 @@
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-turbo": "^2.11.10",
         "globals": "^17.14.0",
-      },
-    },
-    "packages/shared": {
-      "name": "@workspace/shared",
-      "version": "0.0.0",
-      "dependencies": {
-        "@neondatabase/serverless": "^1.2.0",
-        "better-auth": "^1.7.18",
-        "dotenv": "^18.0.9",
-        "drizzle-orm": "^1.0.0-rc.5",
-      },
-      "devDependencies": {
-        "@types/node": "^26.6.6",
-        "drizzle-kit": "^1.0.0-rc.5",
-        "tsx": "^4.23.15",
       },
     },
     "packages/typescript-config": {
@@ -540,6 +560,18 @@
 
     "@tailwindcss/postcss": ["@tailwindcss/postcss@4.3.5", "", { "dependencies": { "@alloc/quick-lru": "^5.2.0", "@tailwindcss/node": "4.3.5", "@tailwindcss/oxide": "4.3.5", "postcss": "^8.5.25", "tailwindcss": "4.3.5" } }, "sha512-FAV37Tlx9wBiT/hkfgVD0Q6CWsP2oUX3lf28nrfjW8+ksILjnpuFulUqWDfNR4/ZiEHHDRBX8DUTzD1Rys687A=="],
 
+    "@tanstack/devtools-event-client": ["@tanstack/devtools-event-client@0.4.4", "", { "bin": { "intent": "./bin/intent.js" } }, "sha512-6T5Yop/793YI+H+5J8Hsyj4kCih9sl4t3ElLgKioW5hk3ocn+ZdSJ94tT7vL7uabxSugWYBZlOTMPzEw2puvQw=="],
+
+    "@tanstack/form-core": ["@tanstack/form-core@1.33.5", "", { "dependencies": { "@tanstack/devtools-event-client": "^0.4.1", "@tanstack/pacer-lite": "^0.1.1", "@tanstack/store": "^0.11.0" } }, "sha512-3dfx9MBP0aq5sXKteikG629X9oviptrQj0IFRk9YGcb+lB7Kv5x8S17oOSk1wUWgjQZ4xVJEMbKwOAODymocgA=="],
+
+    "@tanstack/pacer-lite": ["@tanstack/pacer-lite@0.1.1", "", {}, "sha512-y/xtNPNt/YeyoVxE/JCx+T7yjEzpezmbb+toK8DDD1P4m7Kzs5YR956+7OKexG3f8aXgC3rLZl7b1V+yNUSy5w=="],
+
+    "@tanstack/react-form": ["@tanstack/react-form@1.33.5", "", { "dependencies": { "@tanstack/form-core": "1.33.5", "@tanstack/react-store": "^0.11.0" }, "peerDependencies": { "@tanstack/react-start": "*", "react": "^17.0.0 || ^18.0.0 || ^19.0.0" }, "optionalPeers": ["@tanstack/react-start"] }, "sha512-LlRB28qJwO/QCGaHvWnbdh4haBgTFiZVmzA2uzxSBS3YA7/IqrQ6HOBK70CkFQ+DbflZ7NawsmSln13h5iIdTA=="],
+
+    "@tanstack/react-store": ["@tanstack/react-store@0.11.2", "", { "dependencies": { "@tanstack/store": "0.11.2", "use-sync-external-store": "^1.6.0" }, "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-oj5O5DmiMWE+ih+SioX2ayC1kbK7d3fpLx0B75fPJr9nY3zU+hoW010yr64qXsY/9fyiLVE2bn5mGNV3owm8RQ=="],
+
+    "@tanstack/store": ["@tanstack/store@0.11.2", "", {}, "sha512-sJ4mjol8uQsHV0gOJzzjwXfh2Fwm+Sz0+8deqiTm4jGbMdjzNSW+xZCFm0kUa870uhd8yi+DpKnZb5Kc4apa0Q=="],
+
     "@ts-morph/common": ["@ts-morph/common@0.27.0", "", { "dependencies": { "fast-glob": "^3.3.3", "minimatch": "^10.0.1", "path-browserify": "^1.0.1" } }, "sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ=="],
 
     "@turbo/darwin-64": ["@turbo/darwin-64@2.11.10", "", { "os": "darwin", "cpu": "x64" }, "sha512-By4idRap5+nLnMuRzLB4qkOPRlvNdyY1ne4VJYDyUoUB11H94k7uif9mbe3JT8JSNXs1D68uMcBj6hJ/jMQRvA=="],
@@ -604,9 +636,11 @@
 
     "@ungap/structured-clone": ["@ungap/structured-clone@1.4.0", "", {}, "sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ=="],
 
-    "@workspace/eslint-config": ["@workspace/eslint-config@workspace:packages/eslint-config"],
+    "@workspace/auth": ["@workspace/auth@workspace:packages/auth"],
 
-    "@workspace/shared": ["@workspace/shared@workspace:packages/shared"],
+    "@workspace/db": ["@workspace/db@workspace:packages/db"],
+
+    "@workspace/eslint-config": ["@workspace/eslint-config@workspace:packages/eslint-config"],
 
     "@workspace/typescript-config": ["@workspace/typescript-config@workspace:packages/typescript-config"],
 

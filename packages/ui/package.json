@@ -45,7 +45,7 @@
   "exports": {
     "./globals.css": "./src/styles/globals.css",
     "./postcss.config": "./postcss.config.mjs",
-    "./lib/*": "./src/lib/*.ts",
+    "./lib/*": "./src/lib/*",
     "./components/*": "./src/components/*.tsx",
     "./hooks/*": "./src/hooks/*.ts"
   }

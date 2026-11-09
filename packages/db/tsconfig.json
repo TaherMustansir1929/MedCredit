@@ -1,8 +1,11 @@
 {
   "extends": "@workspace/typescript-config/base.json",
   "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["node"]
   },
   "include": ["."],
   "exclude": ["node_modules", "dist"]

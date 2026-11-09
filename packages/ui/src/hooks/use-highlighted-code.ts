@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { loadHighlighter } from "@workspace/ui/lib/highlighter"
+import { loadHighlighter } from "../lib/highlighter.js"
 
 export function useHighlightedCode(value: string, language: string) {
   // A trailing newline would render as an extra empty line.
@@ -15,7 +15,7 @@ export function useHighlightedCode(value: string, language: string) {
     let cancelled = false
 
     loadHighlighter(language)
-      .then((next) => {
+      .then((next: any) => {
         if (!cancelled) {
           setLoaded({ language, highlighter: next })
         }
